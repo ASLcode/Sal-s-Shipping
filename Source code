@@ -1,0 +1,59 @@
+#Function that calculates the ground shipping. 
+#if will take the weight sort it into the proper weight catergory
+#it will then update the cost with 20 + the weight times the proper price per lb
+def normal_ground_shipping(weight):
+  cost = 0
+  if weight <= 2.0:
+    cost = 20 + (weight * 1.5)
+  elif (weight > 2.0) and (weight <= 6.0):
+    cost = 20 + (weight * 3)
+  elif (weight > 6.0) and (weight <= 10.0):
+    cost = 20 + (weight * 4)
+  else:
+    cost = 20 + (weight * 4.75)
+    
+  return cost
+
+#Function that calculates the drone shipping
+#it will take the weight and sort it into the proper weight category
+#it will the update the cost with weight times the proper price per lb
+def normal_drone_shipping(weight):
+  cost = 0
+  if weight < 2.0:
+    cost = weight * 4.5
+  elif (weight > 2.0) and (weight <= 9.0):
+    cost = weight * 9
+  elif (weight > 6.0) and (weight <= 10):
+    cost = weight * 12
+  else:
+    cost = weight * 14.25
+    
+  return cost
+
+#Function that will compare the cost of drone, ground, and premium ground shipping
+#It will give the price of each method and then it will say which is the cheapest
+def price_comparer(weight):
+  ground_shipping = normal_ground_shipping(weight)
+  drone_shipping = normal_drone_shipping(weight)
+  ground_shipping_premium = 125 + weight
+  print("The price for ground shipping is " + str(ground_shipping) + ".")
+  print("The price for premium ground shipping is " + str(ground_shipping_premium) + ".")
+  print("The price for drone shipping is " + str(drone_shipping) + ".")
+  
+  if (ground_shipping < drone_shipping) and (ground_shipping < ground_shipping_premium):
+    print("The cheapest option is ground shipping.")
+  elif (drone_shipping < ground_shipping) and (drone_shipping < ground_shipping_premium):
+    print("The cheapest option is drone shipping.")
+  else:
+      print("The cheapest option is premium ground shipping")
+
+#premium_price = weight + 125
+#print(normal_ground_shipping(8.4))
+#print(normal_drone_shipping(1.5))
+
+price_comparer(4.8)
+price_comparer(41.5)
+
+
+
+
